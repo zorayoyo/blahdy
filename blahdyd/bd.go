@@ -11,9 +11,12 @@ var useFCGI = flag.Bool("fcgi", false, "Use FastCGI")
 func main() {
 	flag.Parse()
 
+
 	app := webapp.App{}
 	app.Log("App Starts", "OK")
 	app.SetHandler("/", HandleRoot)
+
+	LoadSamples()
 
 	// Start Server.
 	if *useFCGI {

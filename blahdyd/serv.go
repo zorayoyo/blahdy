@@ -25,17 +25,31 @@ func HandleRoot(ctx *webapp.Context) {
 		// Post blah/members/create
 		// Get  blah/members
 		// Get	blah/show
-		HandleBlah(ctx)
+		HandleBlah(ctx, pathLevels)
 	case "actions":
-		HandleAction(ctx)
+		HandleAction(ctx, pathLevels)
 	}
 }
 
-func HandleBlah(ctx * webapp.Context) {
-	fmt.Printf("!!!!!!\n")
-	ctx.Writer.Write([]byte("OK, I am blah."))
+func HandleBlah(ctx * webapp.Context, pathLevels []string) {
+	if len(pathLevels) < 2 {
+		return
+	}
+	switch pathLevels[1] {
+	case "all":
+		ctx.Writer.Write(RenderJson(ctx, "blah/all"))
+	case "actions":
+		ctx.Writer.Write([]byte("blah/actions"))
+	case "members":
+		ctx.Writer.Write([]byte("blah/members"))
+	case "show":
+		ctx.Writer.Write([]byte("blah/show"))
+	}
 }
 
-func HandleAction(ctx * webapp.Context) {
+func HandleAction(ctx * webapp.Context, pathLevels []string) {
 	fmt.Fprintf(ctx.Writer, "OK, I am action.")
 }
+
+
+
