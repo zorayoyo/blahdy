@@ -27,4 +27,8 @@ h1, h2, h3, h4, h5, h6 {
 a{
 	text-decoration: none;
 }
+.clr { clear:both; height:0; overflow:hidden; }
+.clr_after { height:1%; }
+.clr_after:after { clear:both; display:block; height:0; visibility:hidden; content:"."; }
+
 

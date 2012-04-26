@@ -67,12 +67,15 @@
 	width: 150px;
 	height: 30px;
 }
-#sidebar .blah_preview {
+#sidebar .blah_list {
 	background-color: #aaffcc;
+	min-height: 610px;
+}
+#sidebar .blah_preview {
 	border-top: 2px solid #3c9dd0;
 	padding: 5px;
 }
-#sidebar .creator {
+.creator {
 	float: left;
 	width: 48px;
 	height: 48px;
@@ -80,7 +83,7 @@
 	font-weight: bold;
 	padding-left: 50px;
 }
-#sidebar .firstblah {
+.firstblah {
 	padding: 30px 5px 5px 30px;
 	font-size: 16px;
 	color: #3914af;
@@ -96,6 +99,73 @@
 	background: transparent url("../image/star16_cold.png") no-repeat 0 0;
 	margin-left: 50px;
 }
+#content {
+	float: left;
+	width: 578px;
+}
+#content .firstblood {
+	padding: 10px;
+	background-color: #d9ff7e;
+}
+#content .control_nav {
+	float: right;
+	padding: 5px 20px;
+}
+#content .control {
+	float: left;
+	width: 24px;
+	height: 24px;
+	margin-right: 10px;
+	background: transparent no-repeat 0 0;
+}
+#content .reply {
+	background: url("../image/reply.png");
+}
+#content .fav{
+	background: url("../image/fav_cold.png");
+}
+#content .share{
+	background: url("../image/share.png");
+}
+#content .participators {
+	margin-top: 24px;
+}
+#content .user {
+	background-color: #ddd;
+	display: block;
+	float: left;
+	width: 24px;
+	height: 24px;
+	border: 1px #f2f2f2 solid;
+	border-radius: 5px;
+	box-shadow: 0 0 1px #f2f2f2;
+	margin-right: 5px;
+}
+#content .username {
+	display: none;
+}
+#content .participators .more {
+	float: left;
+	background: transparent url("../image/arrow.png")
+}
+#content .discuss {
+	background: #c9f76f;
+	border-top: 2px #679b00 dashed;
+	min-height: 552px;
+}
+#content .discuss .item {
+	padding: 5px;
+	border-bottom: 1px #aaa solid;
+}
+#content .discuss .post {
+	padding: 10px;
+	margin-left: 30px;
+	font-size: 14px;
+	color: #4512ae;
+	font-family: serif,tahoma,arial; 
+} 
+
+
 
 
 
