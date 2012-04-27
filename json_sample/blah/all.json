@@ -5,13 +5,11 @@
             id: "1"
             screenName: "shellex",
             name: "Shellex Wai",
-            joinTime: 1335149972,
             bio: "I am Shellex",
-            lastLoginTime: 1335449972
         }
         createTime: 1335149972,
         updateTime: 1335449972,
-        summary: "This is only a test. Don't panic.",
+        text: "This is only a test. Don't panic.",
         actionNumber: 3
     },
     {
@@ -20,13 +18,11 @@
             id: "1"
             screenName: "shellex",
             name: "Shellex Wai",
-            joinTime: 1335149972,
             bio: "I am Shellex",
-            lastLoginTime: 1335449972
         }
         createTime: 1335149972,
         updateTime: 1335449972,
-        summary: "This is only a test. Don't panic.",
+        text: "This is only a test. Don't panic.",
         actionNumber: 3
     },
     {
@@ -35,13 +31,11 @@
             id: "1"
             screenName: "shellex",
             name: "Shellex Wai",
-            joinTime: 1335149972,
             bio: "I am Shellex",
-            lastLoginTime: 1335449972
         }
         createTime: 1335149972,
         updateTime: 1335449972,
-        summary: "This is only a test. Don't panic.",
+        text: "This is only a test. Don't panic.",
         actionNumber: 3
     },
 ]
