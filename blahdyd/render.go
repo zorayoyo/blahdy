@@ -1,7 +1,7 @@
 package main
 
 import (
-    //"encoding/json"
+    "encoding/json"
 	"os"
     "io/ioutil"
 	"github.com/shellex/tattoo/webapp"
@@ -26,11 +26,18 @@ func LoadSamples() {
 	}
 }
 
-func RenderJson(ctx * webapp.Context, tplName string) []byte {
+func RenderJsonSample(ctx * webapp.Context, tplName string) []byte {
     if value, ok := JsonSample[tplName]; ok {
         return value
     }
 	return nil
 }
 
+func RenderJson(ctx * webapp.Context, value interface{}) []byte {
+	blahJson, err := json.Marshal(value)
+	if err != nil {
+		return nil
+	}
+	return blahJson
+}
 

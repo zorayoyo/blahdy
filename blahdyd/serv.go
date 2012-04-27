@@ -37,7 +37,7 @@ func HandleBlah(ctx * webapp.Context, pathLevels []string) {
 	}
 	switch pathLevels[1] {
 	case "all":
-		ctx.Writer.Write(RenderJson(ctx, "blah/all"))
+		ctx.Writer.Write(RenderJson(ctx, BlahdyDB.GetBlahs()))
 	case "actions":
 		ctx.Writer.Write([]byte("blah/actions"))
 	case "members":

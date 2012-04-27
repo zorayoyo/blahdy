@@ -16,6 +16,7 @@ func main() {
 	app.Log("App Starts", "OK")
 	app.SetHandler("/", HandleRoot)
 
+	BlahdyDB.Load(&app)
 	LoadSamples()
 
 	// Start Server.

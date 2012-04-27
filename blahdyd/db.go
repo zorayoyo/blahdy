@@ -4,6 +4,7 @@ import (
 	"github.com/shellex/tattoo/webapp"
 	"encoding/json"
 	"strconv"
+	"fmt"
 )
 
 type BlahdyStorage struct {
@@ -28,6 +29,13 @@ func (db * BlahdyStorage) Load(app *webapp.App) {
 	db.ActionDB.Init("storage/action/", webapp.FILE_STORAGE_MODE_MULIPLE)
 	app.Log("DB", "Init DB: Vars DB")
 	db.VarDB.Init("storage/var/", webapp.FILE_STORAGE_MODE_MULIPLE)
+	// samples
+	for i := 0; i < 3; i += 1 {
+		blah := Blah{
+			strconv.Itoa(i), "ABC #" + strconv.Itoa(i), "1", 1, 1,
+		}
+		BlahdyDB.CreateBlah(&blah)
+	}
 }
 
 func (db * BlahdyStorage) GetFreeIdByName(name string) string {
@@ -36,17 +44,19 @@ func (db * BlahdyStorage) GetFreeIdByName(name string) string {
 	// write back and return.
 	// i may meet a race problem?
 	var current uint64
+	var err error
 	currentStr, err := db.VarDB.GetString(name)
 	if err != nil {
 		current = 1
 	} else {
-		current, err := strconv.ParseUint(currentStr, 10, 64)
+		current, err = strconv.ParseUint(currentStr, 10, 64)
 		if err != nil {
 			return "0"
 		}
 		current += 1
 	}
-	currentStr = string(current)
+	currentStr = strconv.FormatUint(current, 10)
+	fmt.Printf("%v\n",currentStr)
 	db.VarDB.SetString(name, currentStr)
 	db.VarDB.SaveIndex()
 	return currentStr;
@@ -60,12 +70,12 @@ func (db * BlahdyStorage) GetFreeUserId() string {
 	return db.GetFreeIdByName("freeUserId")
 }
 
-func (db * BlahdyStorage) CreateBlah() ([]byte, error) {
+func (db * BlahdyStorage) CreateBlah(blah * Blah) ([]byte, error) {
 	// get a free id
 	// create a item in BlahDB with this id as key
 	// return the content of the new item
 	freeId := db.GetFreeBlahId()
-	var blah Blah
+	blah.Id = freeId
 	blahJson, err := json.Marshal(blah)
 	if err != nil {
 		return nil, err
@@ -95,8 +105,26 @@ func (db * BlahdyStorage) GetBlah(id string) ([]byte, error) {
 	return blah, nil
 }
 
-func (db * BlahdyStorage) GetBlahs() error {
-	return nil
+func (db * BlahdyStorage) GetBlahJson(id string) (interface{}, error) {
+	if ! db.BlahDB.Has(id) {
+		return nil, nil
+	}
+	blah, _ := db.BlahDB.GetJSON(id)
+	return blah, nil
+}
+
+func (db * BlahdyStorage) GetBlahs() []*Blah {
+	blahs := make([]*Blah, 0)
+	for id, _ := range db.BlahDB.Index {
+		if id == "*" {
+			continue
+		}
+		blahJson, _ := db.GetBlahJson(id)
+		blah := new(Blah)
+		blah.BuildFromJson(blahJson)
+		blahs = append(blahs, blah)
+	}
+	return blahs
 }
 
 
