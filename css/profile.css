@@ -1,0 +1,70 @@
+.profile {
+	margin: 0 auto;
+	width: 360px;
+	height: 240px;
+	border: 1px solid #bbb;
+	box-shadow: 1px 1px 1px 1px #f2f2f2;
+	border-radius: 5px;
+	background-color: #d7ebb3;
+	padding: 20px;
+}
+.profile .card {
+	position: relative;
+	z-index: 199;
+	background: #faddcd;
+	width: 340px;
+	margin: 0 auto;
+	min-height: 240px;
+}
+.profile .card .corner {
+	position: absolute;
+	display: block;
+	top: 0;
+	right: 0;
+	width: 31px;
+	height: 31px;
+	overflow: hidden;
+	box-shadow: -2px 2px 1px rgba(0,0,0,0.3);
+	-webkit-box-shadow: -2px 2px 1px rgba
+}
+.profile .corner .card em {
+	display : block;
+	width: 50px;
+	height: 50px;
+	margin: 10px 0 0 -25px;
+	background-color: #f7f4dc;
+}
+.profile .left {
+	float: left;
+	width: 100px;
+}
+.profile .left .avatar {
+	display: block;
+	margin: 10px 26px; 
+	width: 48px;
+	height: 48px;
+	border: 1px #f2f2f2 solid;
+	border-radius: 5px;
+}
+.profile .left .change_btn {
+	display: block;
+	margin: 0 15px;
+	border-radius: 5px;
+	width: 70px;
+	height: 24px;
+	line-height: 24px;
+}
+.profile .right {
+	float: left;	
+	padding: 20px 5px;
+}
+.profile .perinfo tr {
+}
+.profile .perinfo td {
+	padding: 5px 0 0 0;
+}
+.profile input, .profile select, .profile form {
+	display: none;
+}
+
+
