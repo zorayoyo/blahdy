@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"log"
+	"os"
+	"path"
 	"github.com/shellex/tattoo/webapp"
 )
 
@@ -11,10 +13,12 @@ var useFCGI = flag.Bool("fcgi", false, "Use FastCGI")
 func main() {
 	flag.Parse()
 
-
+	rootPath, _ := os.Getwd()
+	rootPath += ""
 	app := webapp.App{}
 	app.Log("App Starts", "OK")
-	app.SetHandler("/", HandleRoot)
+	app.SetStaticPath("/static", path.Join(rootPath, "/static"))
+	app.SetHandler("/api/", HandleRoot)
 
 	BlahdyDB.Load(&app)
 	LoadSamples()

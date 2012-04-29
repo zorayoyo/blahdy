@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+	function onItemDelete() {
+		var id = $(this).parent().attr('blahId');
+		deleteBlah(id, function (result) {
+			console.log(result);
+		});
+		return false;
+	}
+	function deleteBlah(id, callback) {
+		$.ajax({
+			type: "POST", 		
+			url: "http://127.0.0.1:8888/api/blah/destroy",
+			processDate: true,
+			data: {id: id},
+			success: callback
+		});
+	}
+	function createBlah(text, callback) {
+		$.ajax({
+			type: "POST", 		
+			url: "http://127.0.0.1:8888/api/blah/create",
+			processDate: true,
+			data: {text: text},
+			success: callback
+		});
+	}
+
+	$(document).ready(function () {
+		// 当点击按钮时，获取列表
+		$('#get_list_btn').click(function () {	
+			$('#result a').unbind();
+			$('#result').empty();
+	    $.ajax({
+  	    type: "GET", 		
+				url: "http://127.0.0.1:8888/api/blah/all",
+				success: function(result) {
+					result = JSON.parse(result);
+					console.log(result);
+					for (var i = 0; i < result.length; i += 1) {
+						var blah = result[i];
+						$('#result').append('<li blahId="'+blah.Id+'">' + 
+								'Id:' + blah.Id + ', AuthorId:'+blah.AuthorId 
+								+ ', Text:' + blah.Text
+								+ '<a href="#" class="delete">delete</a></li>');
+					}
+					$('#result .delete').click(onItemDelete);
+				}
+			});
+			return false;
+		});
+		$('#create_item_btn').click(function () {	
+			createBlah($('#blah_text_tbox').val(), function (result) {
+				console.log(result);
+			});
+			return false;
+		});
+	});
+	</script>
+</head>
+<body>
+	<input type="button" id="get_list_btn" value="Fetch List"/>
+	<input type="text" id="blah_text_tbox" value="some text"/>
+	<input type="button" id="create_item_btn" value="Create Item"/>
+	<ul id="result"></ul>	
+</body>
+</html>

@@ -4,7 +4,6 @@ import (
 	"github.com/shellex/tattoo/webapp"
 	"encoding/json"
 	"strconv"
-	"fmt"
 )
 
 type BlahdyStorage struct {
@@ -29,13 +28,6 @@ func (db * BlahdyStorage) Load(app *webapp.App) {
 	db.ActionDB.Init("storage/action/", webapp.FILE_STORAGE_MODE_MULIPLE)
 	app.Log("DB", "Init DB: Vars DB")
 	db.VarDB.Init("storage/var/", webapp.FILE_STORAGE_MODE_MULIPLE)
-	// samples
-	for i := 0; i < 3; i += 1 {
-		blah := Blah{
-			strconv.Itoa(i), "ABC #" + strconv.Itoa(i), "1", 1, 1,
-		}
-		BlahdyDB.CreateBlah(&blah)
-	}
 }
 
 func (db * BlahdyStorage) GetFreeIdByName(name string) string {
@@ -56,7 +48,7 @@ func (db * BlahdyStorage) GetFreeIdByName(name string) string {
 		current += 1
 	}
 	currentStr = strconv.FormatUint(current, 10)
-	fmt.Printf("%v\n",currentStr)
+	//fmt.Printf("%v\n",currentStr)
 	db.VarDB.SetString(name, currentStr)
 	db.VarDB.SaveIndex()
 	return currentStr;

@@ -27,7 +27,11 @@
 
 ### P blah/create
 
-创建新blah。初始化参与者为创建者。
+创建新blah。初始化参与者为创建者。接受一个参数text，为blah的内容
+
+### P blah/destroy
+
+删除一个blah。接收一个参数id，用于指定被删除的Blah。
 
 参数:
 
