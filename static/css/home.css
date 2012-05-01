@@ -3,6 +3,8 @@
 	margin: 0 auto;
   border-radius: 5px 5px 5px 5px;
 	min-height: 680px;
+	height: 100%;
+	box-shadow: 0 0 10px black;
 }
 #toolbar {
 	background: #333 url(../image/mask.png);

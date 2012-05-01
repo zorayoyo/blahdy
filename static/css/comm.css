@@ -14,9 +14,13 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 	-webkit-font-smoothing: antialiased;
 }
+html {
+	height: 100%;
+}
 body {
 	line-height: 1;
-	background: black;
+	background: #333 url(../image/mask.png);
+	height: 100%;
 	font: 12px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #999;
 }
