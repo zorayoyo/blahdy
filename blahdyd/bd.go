@@ -5,7 +5,9 @@ import (
 	"log"
 	"os"
 	"path"
+	"net/http"
 	"github.com/shellex/tattoo/webapp"
+	"code.google.com/p/go.net/websocket"
 )
 
 var useFCGI = flag.Bool("fcgi", false, "Use FastCGI")
@@ -19,6 +21,8 @@ func main() {
 	app.Log("App Starts", "OK")
 	app.SetStaticPath("/static", path.Join(rootPath, "/static"))
 	app.SetHandler("/api/", HandleRoot)
+
+	http.Handle("/ws", websocket.Handler(wsHandler))
 
 	BlahdyDB.Load(&app)
 	LoadSamples()

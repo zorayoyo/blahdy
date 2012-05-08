@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    var conn;
+		var host = '127.0.0.1:8888';
+    $(document).ready(function() {
+    function appendLog(msg) {
+    	$('#log').val($('#log').val() + msg + '\n');
+    }
+
+    $("#send_btn").click(function() {
+    		var msg = $("#msg");
+        if (!conn) {
+            return false;
+        }
+        if (!msg.val()) {
+            return false;
+        }
+        conn.send(msg.val());
+        msg.val("");
+        return false;
+    });
+
+    if (window["WebSocket"]) {
+        conn = new WebSocket("ws://"+host+"/ws");
+        conn.onclose = function(evt) {
+            appendLog('Connection closed');
+        }
+        conn.onmessage = function(evt) {
+					console.log(evt)
+            appendLog(evt.data);
+        }
+    } else {
+        appendLog('Your browser does not support WebSockets');
+    }
+    });
+</script>
+<style type="text/css">
+	#log {
+		width: 600px;
+		height: 300px;
+	}
+	#container {
+		width: 660px;
+		margin: 0 auto;
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<textarea id="log"></textarea>
+		<div>
+			<input type="button" id="send_btn" value="Send" />
+			<input type="text" id="msg"/>
+		</div>
+	</div>
+</body>
+</html>
