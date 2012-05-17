@@ -10,6 +10,7 @@
 	background: #333 url(../image/mask.png);
 	float: left;
 	width: 200px;
+	min-height: 680px;
 }
 #toolbar .profile {
 	text-shadow: 0 1px 1px #111;
@@ -84,26 +85,28 @@
 	float: left;
 	width: 300px;
 	min-height: 680px;
-	border-right: 4px solid #3C9DD0;
+	border-left: 1px solid #282828;
+	background-color: #f2f2f2;
 }
 #sidebar .control_nav {
-	padding: 15px 15px 25px 15px; 
+	padding: 15px 15px 25px 5px; 
 }
 #sidebar #filter {
 	float: right;
-	background-color: #f2f2f2;
-	font-size: 14px; 
 	padding-left: 8px;
-	border: 1px  #00a876 solid;
-	width: 150px;
+	background-color: #fbfdfb;
+	width: 140px;
 	height: 30px;
-}
-#sidebar .blah_list {
-	background-color: #aaffcc;
-	min-height: 610px;
+	border: 1px  #b2b3b4 solid;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	font-size: 14px;
+	line-height: 14px;
+	color: #333;
+	text-shadow: 0 -1px 1px white;
 }
 #sidebar .blah_preview {
-	border-top: 2px solid #3c9dd0;
+	border-top: 1px solid #e2e2e2;
 	padding: 5px;
 }
 .creator {
@@ -119,24 +122,19 @@
 	font-size: 16px;
 	color: #3914af;
 }
-#sidebar .metainfo {
-	padding: 10px 10px 20px 10px;
-	color: black;
-}
 #sidebar .mark_star {
 	display: inline-block;
+	float: right;
+	padding: 0 10px 0 0;
 	width: 16px;
 	height: 16px;
 	background: transparent url("../image/star16_cold.png") no-repeat 0 0;
-	margin-left: 50px;
 }
 #content {
 	float: left;
-	width: 498px;
-}
-#content .firstblood {
-	padding: 10px;
-	background-color: #d9ff7e;
+	width: 519px;
+	min-height: 680px;
+	background-color: #ccc;
 }
 #content .control_nav {
 	float: right;
@@ -180,8 +178,8 @@
 	background: transparent url("../image/arrow.png")
 }
 #content .discuss {
-	background: #c9f76f;
-	border-top: 2px #679b00 dashed;
+	background: #ccc;
+	border-top: 2px #e2e2e2 dashed;
 	min-height: 552px;
 }
 #content .discuss .item {
