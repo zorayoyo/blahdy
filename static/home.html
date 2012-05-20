@@ -5,6 +5,12 @@
 		<link rel="stylesheet" href="css/comm.css" />
 		<link rel="stylesheet" href="css/mochi.css" />
 		<link rel="stylesheet" href="css/home.css" />
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/mochi.js"></script>
+		<script type="text/javascript" src="js/lib.network.js"></script>
+		<script type="text/javascript" src="js/lib.blahdy.js"></script>
+		<script type="text/javascript" src="js/hogan.min.js"></script>
+		<script type="text/javascript" src="js/home.js"></script>
 		<title></title>
 	</head>
 	<body>
@@ -20,13 +26,14 @@
 			</div><!-- #toolbar-->
 			<div id="sidebar">
 				<div class="control_nav">
-					<select id="filter" name="filter" placeholder="按条件检索">
-						<option value="TimeAscend">TimeAscend</option>
-						<option value="TimeDescend">TimeDescend</option>
-						<option value="Marked">Marked</option>
-						<option value="CreatByYourself">CreatByYourself</option>
-					</select>
-					<a class="mochi_button add_btn">Add</a>
+					<a class="mochi_button has_icon add_btn">Add</a>
+					<ul class="blah_view_button_group mochi_button_group">
+						<li>
+						<a class="mochi_button_group_item only_icon all_blah selected" href="#all" name="blah_view"></a>             
+						</li><li>
+						<a class="mochi_button_group_item only_icon pop_blah" href="#pop" name="blah_view"></a>           
+						</li>
+					</ul>
 				</div><!--.control_nav-->
 				<div class="blah_list">
 					<div class="blah_preview">
