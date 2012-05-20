@@ -10,6 +10,7 @@
 	background: #333 url(../image/mask.png);
 	float: left;
 	width: 200px;
+	min-height: 680px;
 }
 #toolbar .profile {
 	text-shadow: 0 1px 1px #111;
@@ -115,6 +116,7 @@
 }
 #sidebar .blah {
 	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #fff;
 	padding: 5px 8px;
 	min-height: 70px;
 	list-style: none;
@@ -132,6 +134,7 @@
 #sidebar .blah_body {
 	margin-left: 56px;
 	color: #333;
+	text-shadow: 0 -1px 1px white;
 }
 .creator {
 	float: left;
@@ -146,24 +149,19 @@
 	font-size: 16px;
 	color: #3914af;
 }
-#sidebar .metainfo {
-	padding: 10px 10px 20px 10px;
-	color: black;
-}
 #sidebar .mark_star {
 	display: inline-block;
+	float: right;
+	padding: 0 10px 0 0;
 	width: 16px;
 	height: 16px;
 	background: transparent url("../image/star16_cold.png") no-repeat 0 0;
-	margin-left: 50px;
 }
 #content {
 	float: left;
-	width: 498px;
-}
-#content .firstblood {
-	padding: 10px;
-	background-color: #d9ff7e;
+	width: 519px;
+	min-height: 680px;
+	background-color: #ccc;
 }
 #content .control_nav {
 	float: right;
@@ -207,8 +205,8 @@
 	background: transparent url("../image/arrow.png")
 }
 #content .discuss {
-	background: #c9f76f;
-	border-top: 2px #679b00 dashed;
+	background: #ccc;
+	border-top: 2px #e2e2e2 dashed;
 	min-height: 552px;
 }
 #content .discuss .item {
