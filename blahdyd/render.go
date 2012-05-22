@@ -26,6 +26,21 @@ func LoadSamples() {
 	}
 }
 
+func RenderAllBlahs() []byte {
+	blahsTmps := make([]*T_BLAH, 0)
+	blahs := BlahdyDB.GetBlahs()
+	for _, blah := range blahs {
+		user := BlahdyDB.GetUser(blah.AuthorId)
+		if user == nil {
+			continue
+		}
+		bt := new(T_BLAH)
+		bt.Build(blah, user)
+		blahsTmps = append(blahsTmps, bt)
+	}
+	return RenderJson(blahsTmps)
+}
+
 func RenderJsonSample(ctx * webapp.Context, tplName string) []byte {
     if value, ok := JsonSample[tplName]; ok {
         return value
@@ -33,7 +48,7 @@ func RenderJsonSample(ctx * webapp.Context, tplName string) []byte {
 	return nil
 }
 
-func RenderJson(ctx * webapp.Context, value interface{}) []byte {
+func RenderJson(value interface{}) []byte {
 	blahJson, err := json.Marshal(value)
 	if err != nil {
 		return nil

@@ -9,6 +9,7 @@ import (
 type BlahdyStorage struct {
 	BlahDB  webapp.FileStorage
 	UserDB	webapp.FileStorage
+	CertDB  webapp.FileStorage
 	ActionDB	webapp.FileStorage
 	VarDB   webapp.FileStorage
 }
@@ -24,6 +25,8 @@ func (db * BlahdyStorage) Load(app *webapp.App) {
 	db.BlahDB.Init("storage/blah/", webapp.FILE_STORAGE_MODE_MULIPLE)
 	app.Log("DB", "Init DB: User DB")
 	db.UserDB.Init("storage/user/", webapp.FILE_STORAGE_MODE_MULIPLE)
+	app.Log("DB", "Init DB: Certification DB")
+	db.CertDB.Init("storage/cert/", webapp.FILE_STORAGE_MODE_MULIPLE)
 	app.Log("DB", "Init DB: Action DB")
 	db.ActionDB.Init("storage/action/", webapp.FILE_STORAGE_MODE_MULIPLE)
 	app.Log("DB", "Init DB: Vars DB")
@@ -119,4 +122,56 @@ func (db * BlahdyStorage) GetBlahs() []*Blah {
 	return blahs
 }
 
+func (db * BlahdyStorage) GetUserJSON(id string) interface{} {
+	if ! db.UserDB.Has(id) {
+		return nil
+	}
+	user, _ := db.UserDB.GetJSON(id)
+	return user
+}
+
+func (db * BlahdyStorage) GetUser(id string) *User {
+	raw := db.GetUserJSON(id)
+	if raw != nil {
+		user := new (User)
+		user.BuildFromJson(raw)
+		return user
+	}
+	return nil
+}
+
+func (db * BlahdyStorage) CreateUser(user * User, password string) ([]byte, error) {
+	// get a free id
+	// create a item in BlahDB with this id as key
+	// return the content of the new item
+	if db.UserDB.Has(user.Id) {
+		return nil, nil
+	}
+	userJson, err := json.Marshal(user)
+	if err != nil {
+		return nil, err
+	}
+	db.UserDB.Set(user.Id, userJson)
+	db.UserDB.SaveIndex()
+
+	cert := UserShadow {}
+	cert.Certification = SHA256Sum(password)
+	certJson, err := json.Marshal(cert)
+	db.CertDB.Set(user.Id, certJson)
+	db.CertDB.SaveIndex()
+	return userJson, nil
+}
+
+func (db * BlahdyStorage) AuthUser(userId string, hash string) ( bool) {
+	if ! db.UserDB.Has(userId) {
+		return false
+	}
+	certJson, err := db.CertDB.GetJSON(userId)
+	if err != nil {
+		return false
+	}
+	cert := UserShadow{}
+	cert.BuildFromJson(certJson)
+	return cert.Certification == hash
+}
 

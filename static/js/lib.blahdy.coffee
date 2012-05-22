@@ -42,10 +42,31 @@ class BlahdyClient
     # headers['Authorization'] = self.basic_auth()
     @network.do_request(method, url, params, headers, null, on_success, on_error)
 
-  getBlahList: (on_success)->
+  auth: (username, password, success, error)->
+    url = @apiBase + 'account/auth'
+    params = {username: username, password: password}
+    @post(url, params, success, error)
+
+  createAccount: (username, password, name, success, error)->
+    url = @apiBase + 'account/create'
+    params = {username: username, password: password, name: name, bio: "", phone:"", email:""}
+    @post(url, params, success, error)
+
+  getAllBlahList: (on_success)->
     url = @apiBase + 'blah/all'
     params = {}
     @get(url, params, on_success)
+
+  createBlah: (text, on_success)->
+    url = @apiBase + 'blah/create'
+    params = {text: text}
+    @post(url, params, on_success)
+
+  destroyBlah: (id, on_success)->
+    url = @apiBase + 'blah/destroy'
+    params = {id: id}
+    @post(url, params, on_success)
+
 
 root = exports ? this
 root.BlahdyClient = root.BlahdyClient ? BlahdyClient

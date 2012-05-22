@@ -53,11 +53,53 @@
       return this.network.do_request(method, url, params, headers, null, on_success, on_error);
     };
 
-    BlahdyClient.prototype.getBlahList = function(on_success) {
+    BlahdyClient.prototype.auth = function(username, password, success, error) {
+      var params, url;
+      url = this.apiBase + 'account/auth';
+      params = {
+        username: username,
+        password: password
+      };
+      return this.post(url, params, success, error);
+    };
+
+    BlahdyClient.prototype.createAccount = function(username, password, name, success, error) {
+      var params, url;
+      url = this.apiBase + 'account/create';
+      params = {
+        username: username,
+        password: password,
+        name: name,
+        bio: "",
+        phone: "",
+        email: ""
+      };
+      return this.post(url, params, success, error);
+    };
+
+    BlahdyClient.prototype.getAllBlahList = function(on_success) {
       var params, url;
       url = this.apiBase + 'blah/all';
       params = {};
       return this.get(url, params, on_success);
+    };
+
+    BlahdyClient.prototype.createBlah = function(text, on_success) {
+      var params, url;
+      url = this.apiBase + 'blah/create';
+      params = {
+        text: text
+      };
+      return this.post(url, params, on_success);
+    };
+
+    BlahdyClient.prototype.destroyBlah = function(id, on_success) {
+      var params, url;
+      url = this.apiBase + 'blah/destroy';
+      params = {
+        id: id
+      };
+      return this.post(url, params, on_success);
     };
 
     return BlahdyClient;
