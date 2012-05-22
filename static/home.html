@@ -15,73 +15,99 @@
 	</head>
 	<body>
 		<div id="container">
-			<div id="toolbar">
-				<h2 class="profile"><a href="" class="avatar"></a><span>Zora</span></h2>
-				<ul id="toolbar_items">
-					<li><a href="" class="blah selected">Blah</a></li>
-					<li><a href="" class="friend">Friends</a></li>
-					<li><a href="" class="search">Search</a></li>
-					<li><a href="" class="logo">Logo</a></li>
-				</ul>
-			</div><!-- #toolbar-->
-			<div id="sidebar">
-				<div class="control_nav">
-					<a class="mochi_button has_icon add_btn">Add</a>
-					<ul class="blah_view_button_group mochi_button_group">
-						<li>
-						<a class="mochi_button_group_item only_icon all_blah selected" href="#all" name="blah_view"></a>             
-						</li><li>
-						<a class="mochi_button_group_item only_icon pop_blah" href="#pop" name="blah_view"></a>           
-						</li>
+			<div id="welcome" class="panel">
+				<div class="banner">
+					<img src="image/banner.jpg" alt="" />
+				</div>
+				<div class="signin_box box">
+					<p>
+						<input type="text" class="mochi_entry username" placeholder="Username"/>
+						<input type="password" class="mochi_entry password" placeholder="Password"/>
+						<input type="button" class="mochi_button blue signin" value="Sign In"/>
+					</p>
+				</div>
+				<div>
+					<a href="#" class="welcome_mode_switch">I don't have an account yet.</a>
+				</div>
+				<div class="signup_box box">
+					<p>
+						<input type="text" class="mochi_entry username" placeholder="Username"/>
+						<input type="text" class="mochi_entry name" placeholder="Formal name"/>
+						<input type="password" class="mochi_entry password" placeholder="Password"/>
+						<input type="button" class="mochi_button blue signup" value="Sign Up"/>
+					</p>
+				</div>
+
+			</div> <!-- #welcome -->
+			<div id="main" class="panel">
+				<div id="toolbar">
+					<h2 class="profile"><a href="" class="avatar"></a><span>Zora</span></h2>
+					<ul id="toolbar_items">
+						<li><a href="" class="blah selected">Blah</a></li>
+						<li><a href="" class="friend">Friends</a></li>
+						<li><a href="" class="search">Search</a></li>
+						<li><a href="" class="logo">Logo</a></li>
 					</ul>
-				</div><!--.control_nav-->
-				<div class="blah_list">
-					<div class="blah_preview">
-						<a href="" class="avatar creator">username</a>
-						<p class="firstblah">this is a blah summary1,if u wanna to see details, pls click me!</p>
-						<p class="metainfo"><span class="comment_time">Time</span><a class="mark_star"></a></p>
-					</div>
-					<div class="blah_preview">
-						<a href="" class="avatar creator">username</a>
-						<p class="firstblah">this is a blah summary1,if u wanna to see details, pls click me!</p>
-						<p class="metainfo"><span class="comment_time">Time</span><a class="mark_star"></a></p>
-					</div>
-					<div class="blah_preview">
-						<a href="" class="avatar creator">username</a>
-						<p class="firstblah blah_summary">this is a blah summary1,if u wanna to see details, pls click me!</p>
-						<p class="metainfo"><span class="comment_time">2012年4月25日</span><a class="mark_star"></a></p>
-					</div>
-				</div>
-			</div><!-- #sidebar-->
-			<div id="content">
-				<div class="firstblood">
-					<a href="" class="avatar creator clr_after">username</a>
-					<p class="firstblah blah_detail">Here u can see the details of the first blah,not just a summary!</p>
-					<div class="control_nav clr_after">
-						<a href="" class="control reply"></a>
-						<a href="" class="control fav"></a>
-						<a href="" class="control share"></a>
-					</div>
-					<div class="participators clr_after">
-						<a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span>
-<a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span><a href="" class="more">更多</a>
-					</div>
-				</div>
-				<div class="discuss">
-					<div class="item">
-						<a href="" class="user clr_after"></a><span class="username"></span>
-						<p class="post">最近的一次发言</p>
+				</div><!-- #toolbar-->
+				<div id="sidebar">
+					<div class="control_nav">
+						<a class="mochi_button has_icon add_btn">Add</a>
+						<ul class="blah_view_button_group mochi_button_group">
+							<li>
+							<a class="mochi_button_group_item only_icon all_blah selected" href="#all" name="blah_view"></a>             
+							</li><li>
+							<a class="mochi_button_group_item only_icon pop_blah" href="#pop" name="blah_view"></a>           
+							</li>
+						</ul>
+					</div><!--.control_nav-->
+					<div class="blah_list">
+						<div class="blah_preview">
+							<a href="" class="avatar creator">username</a>
+							<p class="firstblah">this is a blah summary1,if u wanna to see details, pls click me!</p>
+							<p class="metainfo"><span class="comment_time">Time</span><a class="mark_star"></a></p>
 						</div>
-					<div class="item">
-						<a href="" class="user"></a><span class="username"></span>
-						<p class="post">最近的一次发言</p>
+						<div class="blah_preview">
+							<a href="" class="avatar creator">username</a>
+							<p class="firstblah">this is a blah summary1,if u wanna to see details, pls click me!</p>
+							<p class="metainfo"><span class="comment_time">Time</span><a class="mark_star"></a></p>
+						</div>
+						<div class="blah_preview">
+							<a href="" class="avatar creator">username</a>
+							<p class="firstblah blah_summary">this is a blah summary1,if u wanna to see details, pls click me!</p>
+							<p class="metainfo"><span class="comment_time">2012年4月25日</span><a class="mark_star"></a></p>
+						</div>
 					</div>
-					<div class="item">
-						<a href="" class="user"></a><span class="username"></span>
-						<p class="post">最近的一次发言</p>
+				</div><!-- #sidebar-->
+				<div id="content">
+					<div class="firstblood">
+						<a href="" class="avatar creator clr_after">username</a>
+						<p class="firstblah blah_detail">Here u can see the details of the first blah,not just a summary!</p>
+						<div class="control_nav clr_after">
+							<a href="" class="control reply"></a>
+							<a href="" class="control fav"></a>
+							<a href="" class="control share"></a>
+						</div>
+						<div class="participators clr_after">
+							<a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span>
+	<a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span><a href="" class="more">更多</a>
+						</div>
 					</div>
-				</div>
-			</div><!-- #content-->
+					<div class="discuss">
+						<div class="item">
+							<a href="" class="user clr_after"></a><span class="username"></span>
+							<p class="post">最近的一次发言</p>
+							</div>
+						<div class="item">
+							<a href="" class="user"></a><span class="username"></span>
+							<p class="post">最近的一次发言</p>
+						</div>
+						<div class="item">
+							<a href="" class="user"></a><span class="username"></span>
+							<p class="post">最近的一次发言</p>
+						</div>
+					</div>
+				</div><!-- #content-->
+			</div><!-- #main-->
 		</div><!-- #container-->
 	</body>
 </html>

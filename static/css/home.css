@@ -1,11 +1,44 @@
 #container {
+}
+.panel {
+	background: rgba(255,255,255,0.1);
+	border: 1px #666 solid;
+	box-shadow: 0 0 10px #222;
+}
+#welcome {
+	position: absolute;
+	width: 920px;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px; 
+	margin-left: -470px; 
+	border-radius: 4px;
+	padding: 10px;
+}
+#welcome .box {
+	padding: 10px 0;
+	text-align: right;
+}
+#welcome .box input {
+	margin: 0 3px;
+}
+#welcome .signup_box {
+	display: none;
+}
+#welcome .welcome_mode_switch {
+	padding: 5px 0;
+	color: #ddd;
+}
+
+#main {
 	width: 1020px;
+	display: none;
 	margin: 0 auto;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 5px;
 	min-height: 680px;
 	height: 100%;
-	box-shadow: 0 0 10px black;
 }
+
 #toolbar {
 	background: #333 url(../image/mask.png);
 	float: left;
