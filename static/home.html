@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/lib.network.js"></script>
 		<script type="text/javascript" src="js/lib.blahdy.js"></script>
 		<script type="text/javascript" src="js/hogan.min.js"></script>
+		<script type="text/javascript" src="js/widget.dialog.js"></script>
 		<script type="text/javascript" src="js/home.js"></script>
 		<script type="text/javascript" src="js/welcome.js"></script>
 		<title>Blahdy</title>
@@ -43,7 +44,7 @@
 			</div> <!-- #welcome -->
 			<div id="main" class="panel">
 				<div id="toolbar">
-					<h2 class="profile"><a href="" class="avatar"></a><span>Zora</span></h2>
+					<h2 class="profile"><a id="my_profile_avatar" href="" class="avatar"></a><span>Zora</span></h2>
 					<ul id="toolbar_items">
 						<li><a href="" class="blah selected">Blah</a></li>
 						<li><a href="" class="friend">Friends</a></li>
@@ -110,11 +111,77 @@
 						</div>
 						</li>
 					</ul>
-					<div class="respond"> 
-						<a class="reply_hint">Click to Reply</a>
+					<div id="respond" class="respond"> 
+						<a class="reply_hint" href="#">Click to Reply</a>
+						<div class="editor">
+							<ul class="toolbar">
+								<li>
+									<a href="#" class="mochi_button only_icon font_size"></a>
+								</li><li class="sep"></li><li>
+									<a href="#" class="mochi_button only_icon picture"></a>
+								</li><li>
+									<a href="#" class="mochi_button only_icon video"></a>
+								</li><li>
+									<a href="#" class="mochi_button only_icon vcard"></a>
+								</li><li class="sep"></li><li>
+									<a href="#" class="mochi_button only_icon strong"></a>
+								</li><li>
+									<a href="#" class="mochi_button only_icon italic"></a>
+								</li><li>
+									<a href="#" class="mochi_button only_icon underline"></a>
+								</li><li>
+									<a href="#" class="mochi_button only_icon strokeline"></a>
+								</li><li class="sep"></li><li>
+									<a href="#" class="mochi_button only_icon olist"></a>
+								</li><li>
+									<a href="#" class="mochi_button only_icon ulist"></a>
+								</li><li class="sep"></li><li>
+									<a href="#" style="float:right" class="mochi_button blue save">Save</a>
+								</li>
+							</ul>
+							<textarea class="mochi_textarea"></textarea>
+						</div>
 					</div>
 				</div><!-- #content-->
 			</div><!-- #main-->
 		</div><!-- #container-->
+		<div id="profile_dlg" class="dialog">
+			<div class="dialog_bar">
+					<h2 class="dialog_title" style="">Profile</h2>
+					<a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+			</div>
+			<div class="dialog_container">
+			<div class="dialog_header" style="height:50px;">
+					<div style="position: relative; height: 48px">
+					<div id="profile_avatar" class="avatar" style="position: absolute; top: 0px; left: 0px; width: 48px; height: 48px; -webkit-box-reflect: none; margin: 0px; background-image: url(image/default_avatar.png)"></div>
+					<input id="btn_change_profile_avatar" type="file" style="position:absolute; top: 0px; left: 0px; width: 48px; height: 48px; z-index: 10; cursor: pointer; opacity: 0;">
+					<p style="position: absolute; left: 60px; bottom: 0px;"> Change your Profile picture by clicking it.</p>
+					</div>
+			</div>
+			<div id="profile_dlg_body" class="dialog_body" style="height: 270px; ">
+				<ul class="mochi_list">
+					<li class="mochi_list_item">
+							<input title="Name" type="text" class="mochi_entry widget name" value="Zora">
+							<label class="label">Name</label>
+					</li>
+					<li class="mochi_list_item">
+							<input type="text" class="mochi_entry widget email" value="zorayoyo@gmail.com">
+							<label class="label">Email</label>
+					</li>
+					<li class="mochi_list_item">
+							<input type="text" class="mochi_entry widget phone">
+							<label class="label">Phone</label>
+					</li>
+					<li class="mochi_list_item" style="height:100px;">
+							<textarea placeholder="Bio" style="height:100px;width:100%" class="mochi_textarea"></textarea>
+					</li>
+				</ul>
+			</div>
+			<div class="dialog_footer" style="">
+			<a id="btn_profile_cancel" class="dialog_close_btn mochi_button" data-i18n-text="cancel">Cancel</a>
+			<a id="btn_profile_update" class="mochi_button blue" data-i18n-text="update">Update</a>
+			</div>
+			</div><!-- END of .dialog_container -->
+	</div>
 	</body>
 </html>
