@@ -1,6 +1,8 @@
 class BlahdyClient
   constructor: (@network) ->
     @apiBase = 'http://127.0.0.1:8888/api/'
+    @username = ''
+    @token = ''
 
   defaultErrorHandler: (url, xhr, textStatus, errorThrown)->
     console.log('Error:', url, xhr, textStatus, errorThrown)
@@ -39,7 +41,8 @@ class BlahdyClient
       url = url + '?' + arr.join('&')
       params = {}
     # @TODO Authorization
-    # headers['Authorization'] = self.basic_auth()
+    headers['X-BLAHDY-NAME'] = @username
+    headers['X-BLAHDY-TOKEN'] = @token
     @network.do_request(method, url, params, headers, null, on_success, on_error)
 
   auth: (username, password, success, error)->

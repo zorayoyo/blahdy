@@ -8,8 +8,8 @@ import (
 )
 
 func Auth(ctx * webapp.Context) bool {
-	username := ctx.Request.Header.Get("X-BLAH-USERNAME")
-	token := ctx.Request.Header.Get("X-BLAH-TOKEN")
+	username := ctx.Request.Header.Get("X-BLAHDY-NAME")
+	token := ctx.Request.Header.Get("X-BLAHDY-TOKEN")
 	return BlahdyDB.AuthUser(username, token)
 }
 
@@ -43,10 +43,14 @@ func HandleBlah(ctx * webapp.Context, pathLevels []string) {
 	if len(pathLevels) < 2 {
 		return
 	}
+	if ! Auth(ctx) {
+		ctx.Writer.Write([]byte("not authorization"))
+		return
+	}
 	if ctx.Request.Method == "GET" {
 		switch pathLevels[1] {
 		case "all":
-			ctx.Writer.Write(RenderAllBlahs())
+			ctx.Writer.Write([]byte(string(RenderAllBlahs())))
 		case "actions":
 			ctx.Writer.Write([]byte("blah/actions"))
 		case "members":
@@ -61,7 +65,7 @@ func HandleBlah(ctx * webapp.Context, pathLevels []string) {
 			blah.UpdateTime = time.Now().Unix()
 			blah.CreateTime = blah.UpdateTime
 			// @TODO verify author
-			blah.AuthorId = "0"
+			blah.AuthorId = ctx.Request.Header.Get("X-BLAHDY-NAME")
 			blah.Text = text
 			blahBytes, err := BlahdyDB.CreateBlah(&blah)
 			if err == nil {

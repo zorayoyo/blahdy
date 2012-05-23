@@ -9,6 +9,8 @@
     function BlahdyClient(network) {
       this.network = network;
       this.apiBase = 'http://127.0.0.1:8888/api/';
+      this.username = '';
+      this.token = '';
     }
 
     BlahdyClient.prototype.defaultErrorHandler = function(url, xhr, textStatus, errorThrown) {
@@ -50,6 +52,8 @@
         url = url + '?' + arr.join('&');
         params = {};
       }
+      headers['X-BLAHDY-NAME'] = this.username;
+      headers['X-BLAHDY-TOKEN'] = this.token;
       return this.network.do_request(method, url, params, headers, null, on_success, on_error);
     };
 

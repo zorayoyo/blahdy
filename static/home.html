@@ -11,18 +11,20 @@
 		<script type="text/javascript" src="js/lib.blahdy.js"></script>
 		<script type="text/javascript" src="js/hogan.min.js"></script>
 		<script type="text/javascript" src="js/home.js"></script>
-		<title></title>
+		<script type="text/javascript" src="js/welcome.js"></script>
+		<title>Blahdy</title>
 	</head>
 	<body>
 		<div id="container">
+			<h1>BLAHDY</h1>
 			<div id="welcome" class="panel">
 				<div class="banner">
 					<img src="image/banner.jpg" alt="" />
 				</div>
 				<div class="signin_box box">
 					<p>
-						<input type="text" class="mochi_entry username" placeholder="Username"/>
-						<input type="password" class="mochi_entry password" placeholder="Password"/>
+						<input type="text" class="mochi_entry username" placeholder="Username" value="shellex"/>
+						<input type="password" class="mochi_entry password" placeholder="Password" value="123"/>
 						<input type="button" class="mochi_button blue signin" value="Sign In"/>
 					</p>
 				</div>
@@ -61,50 +63,55 @@
 						</ul>
 					</div><!--.control_nav-->
 					<div class="blah_list">
-						<div class="blah_preview">
-							<a href="" class="avatar creator">username</a>
-							<p class="firstblah">this is a blah summary1,if u wanna to see details, pls click me!</p>
-							<p class="metainfo"><span class="comment_time">Time</span><a class="mark_star"></a></p>
-						</div>
-						<div class="blah_preview">
-							<a href="" class="avatar creator">username</a>
-							<p class="firstblah">this is a blah summary1,if u wanna to see details, pls click me!</p>
-							<p class="metainfo"><span class="comment_time">Time</span><a class="mark_star"></a></p>
-						</div>
-						<div class="blah_preview">
-							<a href="" class="avatar creator">username</a>
-							<p class="firstblah blah_summary">this is a blah summary1,if u wanna to see details, pls click me!</p>
-							<p class="metainfo"><span class="comment_time">2012年4月25日</span><a class="mark_star"></a></p>
-						</div>
 					</div>
 				</div><!-- #sidebar-->
 				<div id="content">
 					<div class="firstblood">
-						<a href="" class="avatar creator clr_after">username</a>
-						<p class="firstblah blah_detail">Here u can see the details of the first blah,not just a summary!</p>
-						<div class="control_nav clr_after">
-							<a href="" class="control reply"></a>
-							<a href="" class="control fav"></a>
-							<a href="" class="control share"></a>
-						</div>
+						<a href="" class="avatar"></a>
+						<div class="time">Fri Jan 16 1970 19:35:43 </div>
+						<div class="name">zora</div>
+						<p class="body">你好，这是一条中文</p>
 						<div class="participators clr_after">
-							<a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span>
-	<a href="" class="user"></a><span class="username">username</span><a href="" class="user"></a><span class="username">username</span><a href="" class="more">更多</a>
+							<a href="" class="avatar sample1"></a>
+							<a href="" class="avatar sample2"></a>
+							<a href="" class="avatar sample3"></a>
+							<a href="" class="avatar sample4"></a>
+							<a href="" class="avatar sample5"></a>
+						</div>
+						<div class="control_nav clr_after">
+							<a href="" class="control share"></a>
+							<a href="" class="control fav"></a>
+							<a href="" class="control reply"></a>
 						</div>
 					</div>
-					<div class="discuss">
-						<div class="item">
-							<a href="" class="user clr_after"></a><span class="username"></span>
-							<p class="post">最近的一次发言</p>
-							</div>
-						<div class="item">
-							<a href="" class="user"></a><span class="username"></span>
-							<p class="post">最近的一次发言</p>
+					<ul class="discuss">
+						<li id="4" author_id="shellex" class="message">
+						<div class="avatar sample1"></div>
+						<div class="message_body">
+							<div class="time">19:35:43</div>
+							<div class="name">shellex</div>
+							<div class="text">测试</div>
 						</div>
-						<div class="item">
-							<a href="" class="user"></a><span class="username"></span>
-							<p class="post">最近的一次发言</p>
+						</li>
+						<li id="4" author_id="shellex" class="message">
+						<div class="avatar sample3"></div>
+						<div class="message_body">
+							<div class="time">19:40:10</div>
+							<div class="name">john</div>
+							<div class="text">sadasdasda ddd</div>
 						</div>
+						</li>
+						<li id="4" author_id="shellex" class="message">
+						<div class="avatar sample4"></div>
+						<div class="message_body">
+							<div class="time">19:35:43</div>
+							<div class="name">Kamila</div>
+							<div class="text">Yet another test</div>
+						</div>
+						</li>
+					</ul>
+					<div class="respond"> 
+						<a class="reply_hint">Click to Reply</a>
 					</div>
 				</div><!-- #content-->
 			</div><!-- #main-->

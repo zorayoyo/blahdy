@@ -82,12 +82,13 @@ self.do_request = function do_request(req_method, req_url, req_params, req_heade
             for (var k in req_headers) {
                 xhr.setRequestHeader(k, req_headers[k]);
             }
-            xhr.overrideMimeType('text/plain; charset=x-user-defined');
+            xhr.overrideMimeType('text/plain; charset=UTF-8');
         },
         success: 
         function(result, textStatus, xhr) {
             if ( on_success != null) {
                 result = self.normalize_result(result);
+
                 self.success_task_table[task_uuid](result, textStatus, xhr);
                 delete self.success_task_table[task_uuid];
                 delete self.error_task_table[task_uuid];
