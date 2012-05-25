@@ -27,13 +27,12 @@ func HandleRoot(ctx *webapp.Context) {
 	switch pathLevels[0] {
 	case "blah":
 		// Get  blah/all
-		// Get  blah/actions
 		// Get	blah/show
 		// Post blah/create
 		// Post blah/destroy
 		HandleBlah(ctx, pathLevels)
-	case "actions":
-		HandleAction(ctx, pathLevels)
+	case "message":
+		HandleMessage(ctx, pathLevels)
 	case "account":
 		HandleAccount(ctx, pathLevels)
 	}
@@ -54,7 +53,10 @@ func HandleBlah(ctx * webapp.Context, pathLevels []string) {
 		case "timeline":
 			// blah/timeline?id=BLAH_ID
 			id := ctx.Request.FormValue("id")
-			HandleBlahTimeline(ctx, id)
+			ctx.Writer.Write(RenderTimeline(id))
+		case "show":
+			id := ctx.Request.FormValue("id")
+			ctx.Writer.Write(RenderBlah(id))
 		case "members":
 			ctx.Writer.Write([]byte("blah/members"))
 		}
@@ -85,8 +87,42 @@ func HandleBlah(ctx * webapp.Context, pathLevels []string) {
 	}
 }
 
-func HandleBlahTimeline(ctx * webapp.Context, id string) {
-	
+func HandleMessage(ctx * webapp.Context, pathLevels []string) {
+	if len(pathLevels) < 2 {
+		return
+	}
+	if ! Auth(ctx) {
+		ctx.Writer.Write([]byte("not authorization"))
+		return
+	}
+	if ctx.Request.Method == "GET" {
+
+	} else if ctx.Request.Method == "POST" {
+		switch pathLevels[1] {
+		case "create":
+			// @TODO verify 
+			text := ctx.Request.FormValue("text")
+			blahId := ctx.Request.FormValue("blah_id")
+			var msg Message
+			msg.CreateTime = time.Now().Unix()
+			msg.BlahId = blahId
+			// @TODO verify author
+			msg.AuthorId = ctx.Request.Header.Get("X-BLAHDY-NAME")
+			msg.Text = text
+			msgBytes, err := BlahdyDB.CreateMessage(&msg)
+			if err == nil {
+				ctx.Writer.Write(msgBytes)
+			}
+		case "destroy":
+			id := ctx.Request.FormValue("id")
+			blahBytes, err := BlahdyDB.DestroyMessage(id)
+			if err == nil {
+				ctx.Writer.Write(blahBytes)
+			}
+		}
+	} else {
+		// do nothing
+	}
 }
 
 func HandleBlahMember(ctx * webapp.Context, pathLevels []string) {
@@ -128,9 +164,6 @@ func HandleAccount(ctx * webapp.Context, pathLevels []string) {
 
 }
 
-func HandleAction(ctx * webapp.Context, pathLevels []string) {
-	fmt.Fprintf(ctx.Writer, "OK, I am action.")
-}
 
 
 

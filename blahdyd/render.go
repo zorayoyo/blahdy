@@ -41,6 +41,33 @@ func RenderAllBlahs() []byte {
 	return RenderJson(blahsTmps)
 }
 
+func RenderBlah(id string) []byte {
+	blahTmp := T_BLAH{}
+	blah := BlahdyDB.GetBlah(id)
+	user := BlahdyDB.GetUser(blah.AuthorId)
+	if user == nil {
+		return nil
+	}
+	blahTmp.Build(blah, user)
+	return RenderJson(blahTmp)
+}
+
+
+func RenderTimeline(id string) []byte {
+	msgTmps := make([]*T_MESSAGE, 0)
+	msgs := BlahdyDB.GetTimeline(id)
+	for _, msg := range msgs {
+		user := BlahdyDB.GetUser(msg.AuthorId)
+		if user == nil {
+			continue
+		}
+		mt := new(T_MESSAGE)
+		mt.Build(msg, user)
+		msgTmps = append(msgTmps, mt)
+	}
+	return RenderJson(msgTmps)
+}
+
 func RenderJsonSample(ctx * webapp.Context, tplName string) []byte {
     if value, ok := JsonSample[tplName]; ok {
         return value

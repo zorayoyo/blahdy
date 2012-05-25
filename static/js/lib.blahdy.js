@@ -88,6 +88,15 @@
       return this.get(url, params, on_success);
     };
 
+    BlahdyClient.prototype.getBlah = function(id, on_success) {
+      var params, url;
+      url = this.apiBase + 'blah/show';
+      params = {
+        id: id
+      };
+      return this.get(url, params, on_success);
+    };
+
     BlahdyClient.prototype.createBlah = function(text, on_success) {
       var params, url;
       url = this.apiBase + 'blah/create';
@@ -100,6 +109,34 @@
     BlahdyClient.prototype.destroyBlah = function(id, on_success) {
       var params, url;
       url = this.apiBase + 'blah/destroy';
+      params = {
+        id: id
+      };
+      return this.post(url, params, on_success);
+    };
+
+    BlahdyClient.prototype.getBlahTimeline = function(blahId, on_success) {
+      var params, url;
+      url = this.apiBase + 'blah/timeline';
+      params = {
+        id: blahId
+      };
+      return this.get(url, params, on_success);
+    };
+
+    BlahdyClient.prototype.createMessage = function(blahId, text, on_success) {
+      var params, url;
+      url = this.apiBase + 'message/create';
+      params = {
+        blah_id: blahId,
+        text: text
+      };
+      return this.post(url, params, on_success);
+    };
+
+    BlahdyClient.prototype.destroyMessage = function(id, on_success) {
+      var params, url;
+      url = this.apiBase + 'message/destroy';
       params = {
         id: id
       };

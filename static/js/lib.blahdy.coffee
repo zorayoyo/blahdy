@@ -60,6 +60,11 @@ class BlahdyClient
     params = {}
     @get(url, params, on_success)
 
+  getBlah: (id, on_success)->
+    url = @apiBase + 'blah/show'
+    params = {id: id}
+    @get(url, params, on_success)
+
   createBlah: (text, on_success)->
     url = @apiBase + 'blah/create'
     params = {text: text}
@@ -70,6 +75,20 @@ class BlahdyClient
     params = {id: id}
     @post(url, params, on_success)
 
+  getBlahTimeline: (blahId, on_success)->
+    url = @apiBase + 'blah/timeline'
+    params = {id: blahId}
+    @get(url, params, on_success)
+
+  createMessage: (blahId, text, on_success)->
+    url = @apiBase + 'message/create'
+    params = {blah_id: blahId, text: text}
+    @post(url, params, on_success)
+
+  destroyMessage: (id, on_success)->
+    url = @apiBase + 'message/destroy'
+    params = {id: id}
+    @post(url, params, on_success)
 
 root = exports ? this
 root.BlahdyClient = root.BlahdyClient ? BlahdyClient

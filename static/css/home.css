@@ -218,6 +218,7 @@
 	box-shadow: -1px 0px 10px #333;
 	font-size: 14px;
 	color: #333; 
+	display: none;
 }
 #content .firstblood {
 	padding: 10px;
