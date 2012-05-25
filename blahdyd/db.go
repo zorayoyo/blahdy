@@ -10,7 +10,8 @@ type BlahdyStorage struct {
 	BlahDB  webapp.FileStorage
 	UserDB	webapp.FileStorage
 	CertDB  webapp.FileStorage
-	ActionDB	webapp.FileStorage
+	MessageDB webapp.FileStorage
+	MessageIndexDB webapp.FileStorage
 	VarDB   webapp.FileStorage
 }
 
@@ -27,8 +28,10 @@ func (db * BlahdyStorage) Load(app *webapp.App) {
 	db.UserDB.Init("storage/user/", webapp.FILE_STORAGE_MODE_MULIPLE)
 	app.Log("DB", "Init DB: Certification DB")
 	db.CertDB.Init("storage/cert/", webapp.FILE_STORAGE_MODE_MULIPLE)
-	app.Log("DB", "Init DB: Action DB")
-	db.ActionDB.Init("storage/action/", webapp.FILE_STORAGE_MODE_MULIPLE)
+	app.Log("DB", "Init DB: Message DB")
+	db.MessageDB.Init("storage/message/", webapp.FILE_STORAGE_MODE_MULIPLE)
+	app.Log("DB", "Init DB: Message Index DB")
+	db.MessageIndexDB.Init("storage/message_index/", webapp.FILE_STORAGE_MODE_MULIPLE)
 	app.Log("DB", "Init DB: Vars DB")
 	db.VarDB.Init("storage/var/", webapp.FILE_STORAGE_MODE_MULIPLE)
 }
@@ -61,9 +64,12 @@ func (db * BlahdyStorage) GetFreeBlahId() string {
 	return db.GetFreeIdByName("freeBlahId")
 }
 
-func (db * BlahdyStorage) GetFreeUserId() string {
-	return db.GetFreeIdByName("freeUserId")
+func (db * BlahdyStorage) GetFreeMessageId() string {
+	return db.GetFreeIdByName("freeMessageId")
 }
+
+
+// blah operation ================= 
 
 func (db * BlahdyStorage) CreateBlah(blah * Blah) ([]byte, error) {
 	// get a free id
@@ -122,6 +128,8 @@ func (db * BlahdyStorage) GetBlahs() []*Blah {
 	return blahs
 }
 
+// user operation ================= 
+
 func (db * BlahdyStorage) GetUserJSON(id string) interface{} {
 	if ! db.UserDB.Has(id) {
 		return nil
@@ -175,3 +183,51 @@ func (db * BlahdyStorage) AuthUser(userId string, hash string) ( bool) {
 	return cert.Certification == hash
 }
 
+// message operation ================= 
+
+func (db * BlahdyStorage) CreateMessage(blahId string, msg * Message) ([]byte, error) {
+	// update index
+	var lst []interface{}
+	var lst_buff interface{}
+	lst_buff, err := db.MessageIndexDB.GetJSON(blahId)
+	if err != nil {
+		println("load message index failed", err)
+	} else {
+		lst = lst_buff.([]interface{})
+	}
+	newList := make([]string, 0)
+	for _, k := range lst {
+		newList = append(newList, k.(string))
+	}
+	newList = append(newList, msg.Id)
+	db.MessageIndexDB.SetJSON(blahId, newList)
+	db.MessageIndexDB.SaveIndex()
+	// update content
+	// get a free id
+	// create a item in MessageDB with this id as key
+	// return the content of the new item
+	freeId := db.GetFreeMessageId()
+	msg.Id = freeId
+	msgJson, err := json.Marshal(msg)
+	if err != nil {
+		return nil, err
+	}
+	db.MessageDB.Set(freeId, msgJson)
+	db.MessageDB.SaveIndex()
+	return msgJson, nil
+}
+
+func (db * BlahdyStorage) DestroyMessage(id string) ([]byte, error) {
+	// check existence of the specified id
+	// and remove it from db
+	return nil, nil
+}
+
+func (db * BlahdyStorage) GetMessage(id string) ([]byte, error) {
+	// @TODO a custom error should be defined.
+	if ! db.MessageDB.Has(id) {
+		return nil, nil
+	}
+	message, _ := db.MessageDB.Get(id)
+	return message, nil
+}

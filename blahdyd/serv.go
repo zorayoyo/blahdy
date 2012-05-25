@@ -50,9 +50,11 @@ func HandleBlah(ctx * webapp.Context, pathLevels []string) {
 	if ctx.Request.Method == "GET" {
 		switch pathLevels[1] {
 		case "all":
-			ctx.Writer.Write([]byte(string(RenderAllBlahs())))
-		case "actions":
-			ctx.Writer.Write([]byte("blah/actions"))
+			ctx.Writer.Write(RenderAllBlahs())
+		case "timeline":
+			// blah/timeline?id=BLAH_ID
+			id := ctx.Request.FormValue("id")
+			HandleBlahTimeline(ctx, id)
 		case "members":
 			ctx.Writer.Write([]byte("blah/members"))
 		}
@@ -81,6 +83,10 @@ func HandleBlah(ctx * webapp.Context, pathLevels []string) {
 	} else {
 		// do nothing
 	}
+}
+
+func HandleBlahTimeline(ctx * webapp.Context, id string) {
+	
 }
 
 func HandleBlahMember(ctx * webapp.Context, pathLevels []string) {
