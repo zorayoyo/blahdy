@@ -44,10 +44,19 @@ function initWelcome() {
     });
 }
 
+function autoReload() {
+    loadAllBlah();
+    if (globals.selectedBlahId != null) {
+        loadBlahTimeline(globals.selectedBlahId);
+    }
+    setTimeout(autoReload, 3000);
+}
+
 function passAuth() {
     $('#welcome').hide();
     $('#container > h1').hide();
     $('#main').show();
     $('#my_profile_avatar').addClass(globals.client.username)
-    loadAllBlah(); 
+    $('#my_profile_name').text(globals.client.username)
+    autoReload(); 
 }

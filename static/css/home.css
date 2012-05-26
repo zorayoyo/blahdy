@@ -141,7 +141,7 @@
 	min-width: 0;
 	box-shadow: none;
 }
-#sidebar .add_btn {
+#sidebar .control_nav .mochi_button {
 	box-shadow: none;
 }
 #sidebar .add_btn::after {
@@ -152,6 +152,13 @@
 }
 #sidebar .pop_blah::after {
 	background-image: url(../image/ic16_popular.png);
+}
+
+#sidebar .search_btn::after {
+	background-image: url(../image/ic16_find.png);
+}
+#sidebar .search_result li{
+	display: none;
 }
 #sidebar .blah_list {
 	background-color: #fff;

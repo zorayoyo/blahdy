@@ -25,7 +25,7 @@
 				</div>
 				<div class="signin_box box">
 					<p>
-						<input type="text" class="mochi_entry username" placeholder="Username" value="zorayoyo"/>
+						<input type="text" class="mochi_entry username" placeholder="Username" value="zora"/>
 						<input type="password" class="mochi_entry password" placeholder="Password" value="123"/>
 						<input type="button" class="mochi_button blue signin" value="Sign In"/>
 					</p>
@@ -45,7 +45,7 @@
 			</div> <!-- #welcome -->
 			<div id="main" class="panel">
 				<div id="toolbar">
-					<h2 class="profile"><a id="my_profile_avatar" href="" class="avatar"></a><span>Zora</span></h2>
+					<h2 class="profile"><a id="my_profile_avatar" href="" class="avatar"></a><span id="my_profile_name">Zora</span></h2>
 					<ul id="toolbar_items">
 						<li><a href="#blah_b" class="blah selected">Blah</a></li>
 						<li><a href="#friend_b" class="friend">Friends</a></li>
@@ -88,10 +88,10 @@
 								<div class="text">测试用户2</div>
 							</div>
 							</li>
-							<li author_id="bob" class="blah">
-							<div class="avatar bob"></div>
+							<li author_id="luna" class="blah">
+							<div class="avatar luna"></div>
 							<div class="blah_body">
-								<div class="name">bob</div>
+								<div class="name">luna</div>
 								<div class="text">测试用户3</div>
 							</div>
 							</li>
@@ -113,9 +113,10 @@
 					</div>
 					<div class="sidebar_role search_b">
 						<div class="control_nav">
-							<input type="text" class="mochi_entry search" style="width:100%;" placeholder="type to search"/>
+							<input type="text" class="mochi_entry" id="search_tbox" style="width:250px;" placeholder="type to search"/>
+							<a class="mochi_button only_icon search_btn" style="vertical-align: middle;"></a>
 						</div><!--.control_nav-->
-						<ul class="blah_list search_result">
+						<ul class="search_result">
 						</ul>
 					</div>
 				</div><!-- #sidebar-->
