@@ -135,3 +135,46 @@ a{
     white-space:normal;
 }
 
+/* scrollbar */
+#scrollbar_container {  
+	position:relative;  
+} 
+ 
+.scrollbar_track {  
+	position:absolute;  
+	top:0;  
+	right:0;  
+	height:100%;  
+	width:10px;  
+	cursor:pointer;
+} 
+
+.scrollbar_track .scrollbar_slot {
+	background-color: rgba(200,200,200,0.1);  
+	border-radius: 5px;
+	height:100%;  
+	position:relative;  
+}
+
+.scrollbar_track:hover .scrollbar_slot {  
+	background-color: rgba(80,80,80,0.1);  
+}
+
+.scrollbar_handle {  
+	width:10px;  
+	background-color: gray;  
+	cursor:pointer;  
+	border-radius: 5px;  
+	opacity:0.5;  
+	min-height: 100px;
+	position: absolute;
+	-webkit-transition: opacity 0.2s ease-in;
+} 
+
+.scrollbar_track.active .scrollbar_handle, .scrollbar_handle:hover {
+	opacity:0.9;  
+}
+
+.scrollbar_content {  
+	overflow:hidden;  
+}

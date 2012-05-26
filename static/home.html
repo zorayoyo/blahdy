@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/lib.network.js"></script>
 		<script type="text/javascript" src="js/lib.blahdy.js"></script>
 		<script type="text/javascript" src="js/hogan.min.js"></script>
+		<script type="text/javascript" src="js/widget.scrollbar.js"></script>
 		<script type="text/javascript" src="js/widget.dialog.js"></script>
 		<script type="text/javascript" src="js/home.js"></script>
 		<script type="text/javascript" src="js/welcome.js"></script>
@@ -46,100 +47,136 @@
 				<div id="toolbar">
 					<h2 class="profile"><a id="my_profile_avatar" href="" class="avatar"></a><span>Zora</span></h2>
 					<ul id="toolbar_items">
-						<li><a href="" class="blah selected">Blah</a></li>
-						<li><a href="" class="friend">Friends</a></li>
-						<li><a href="" class="search">Search</a></li>
-						<li><a href="" class="logo">Logo</a></li>
+						<li><a href="#blah_b" class="blah selected">Blah</a></li>
+						<li><a href="#friend_b" class="friend">Friends</a></li>
+						<li><a href="#search_b" class="search">Search</a></li>
+						<li><a href="#" class="logo">BLAHDY</a></li>
 					</ul>
 				</div><!-- #toolbar-->
 				<div id="sidebar">
-					<div class="control_nav">
-						<a class="mochi_button has_icon add_btn">Add</a>
-						<ul class="blah_view_button_group mochi_button_group">
-							<li>
-							<a class="mochi_button_group_item only_icon all_blah selected" href="#all" name="blah_view"></a>             
-							</li><li>
-							<a class="mochi_button_group_item only_icon pop_blah" href="#pop" name="blah_view"></a>           
+					<div class="sidebar_role blah_b">
+						<div class="control_nav">
+							<a class="mochi_button has_icon add_btn">Add</a>
+							<ul class="blah_view_button_group mochi_button_group">
+								<li>
+								<a class="mochi_button_group_item only_icon all_blah selected" href="#all" name="blah_view"></a>             
+								</li><li>
+								<a class="mochi_button_group_item only_icon pop_blah" href="#pop" name="blah_view"></a>           
+								</li>
+							</ul>
+						</div><!--.control_nav-->
+						<ul class="blah_list">
+						</ul>
+					</div>
+					<div class="sidebar_role friend_b">
+						<div class="control_nav">
+							<a class="mochi_button has_icon add_btn">Add</a>
+							<input type="text" class="mochi_entry search"/>
+						</div><!--.control_nav-->
+						<ul class="friend_list">
+							<li author_id="zora" class="blah">
+							<div class="avatar zora"></div>
+							<div class="blah_body">
+								<div class="name">zora</div>
+								<div class="text">测试用户1</div>
+							</div>
+							</li>
+							<li author_id="shellex" class="blah">
+							<div class="avatar shellex"></div>
+							<div class="blah_body">
+								<div class="name">shellex</div>
+								<div class="text">测试用户2</div>
+							</div>
+							</li>
+							<li author_id="bob" class="blah">
+							<div class="avatar bob"></div>
+							<div class="blah_body">
+								<div class="name">bob</div>
+								<div class="text">测试用户3</div>
+							</div>
+							</li>
+							<li author_id="huk" class="blah">
+							<div class="avatar huk"></div>
+							<div class="blah_body">
+								<div class="name">huk</div>
+								<div class="text">测试用户4</div>
+							</div>
+							</li>
+							<li author_id="diablo" class="blah">
+							<div class="avatar diablo"></div>
+							<div class="blah_body">
+								<div class="name">diablo</div>
+								<div class="text">测试用户5</div>
+							</div>
 							</li>
 						</ul>
-					</div><!--.control_nav-->
-					<div class="blah_list">
+					</div>
+					<div class="sidebar_role search_b">
+						<div class="control_nav">
+							<input type="text" class="mochi_entry search" style="width:100%;" placeholder="type to search"/>
+						</div><!--.control_nav-->
+						<ul class="blah_list search_result">
+						</ul>
 					</div>
 				</div><!-- #sidebar-->
 				<div id="content">
-					<div class="firstblood">
-						<a href="" class="avatar"></a>
-						<div class="time">Fri Jan 16 1970 19:35:43 </div>
-						<div class="name">zora</div>
-						<p class="body">你好，这是一条中文</p>
-						<div class="participators clr_after">
-							<a href="" class="avatar sample1"></a>
-							<a href="" class="avatar sample2"></a>
-							<a href="" class="avatar sample3"></a>
-							<a href="" class="avatar sample4"></a>
-							<a href="" class="avatar sample5"></a>
-						</div>
-						<div class="control_nav clr_after">
-							<a href="" class="control share"></a>
-							<a href="" class="control fav"></a>
-							<a href="" class="control reply"></a>
-						</div>
+					<div class="scrollbar_track" style="display:block; ">        
+						<div class="scrollbar_slot">
+							<div class="scrollbar_handle" style="top:0px;">
+							</div> 
+						</div>    
 					</div>
-					<ul class="discuss">
-						<li id="4" author_id="shellex" class="message">
-						<div class="avatar sample1"></div>
-						<div class="message_body">
-							<div class="time">19:35:43</div>
-							<div class="name">shellex</div>
-							<div class="text">测试</div>
+					<div class="content_inner scrollbar_content">
+						<div class="firstblood">
+							<a href="" class="avatar"></a>
+							<div class="time">Fri Jan 16 1970 19:35:43 </div>
+							<div class="name">zora</div>
+							<p class="body">你好，这是一条中文</p>
+							<div class="participators clr_after">
+								<a href="" class="avatar sample1"></a>
+								<a href="" class="avatar sample2"></a>
+								<a href="" class="avatar sample3"></a>
+								<a href="" class="avatar sample4"></a>
+								<a href="" class="avatar sample5"></a>
+							</div>
+							<div class="control_nav clr_after">
+								<a href="#respond" class="control reply"></a>
+								<a href="#" class="control fav"></a>
+								<a href="#" class="control share"></a>
+							</div>
 						</div>
-						</li>
-						<li id="4" author_id="shellex" class="message">
-						<div class="avatar sample3"></div>
-						<div class="message_body">
-							<div class="time">19:40:10</div>
-							<div class="name">john</div>
-							<div class="text">sadasdasda ddd</div>
-						</div>
-						</li>
-						<li id="4" author_id="shellex" class="message">
-						<div class="avatar sample4"></div>
-						<div class="message_body">
-							<div class="time">19:35:43</div>
-							<div class="name">Kamila</div>
-							<div class="text">Yet another test</div>
-						</div>
-						</li>
-					</ul>
-					<div id="respond" class="respond"> 
-						<a class="reply_hint" href="#">Click to Reply</a>
-						<div class="editor">
-							<ul class="toolbar">
-								<li>
-									<a href="#" class="mochi_button only_icon font_size"></a>
-								</li><li class="sep"></li><li>
-									<a href="#" class="mochi_button only_icon picture"></a>
-								</li><li>
-									<a href="#" class="mochi_button only_icon video"></a>
-								</li><li>
-									<a href="#" class="mochi_button only_icon vcard"></a>
-								</li><li class="sep"></li><li>
-									<a href="#" class="mochi_button only_icon strong"></a>
-								</li><li>
-									<a href="#" class="mochi_button only_icon italic"></a>
-								</li><li>
-									<a href="#" class="mochi_button only_icon underline"></a>
-								</li><li>
-									<a href="#" class="mochi_button only_icon strokeline"></a>
-								</li><li class="sep"></li><li>
-									<a href="#" class="mochi_button only_icon olist"></a>
-								</li><li>
-									<a href="#" class="mochi_button only_icon ulist"></a>
-								</li><li class="sep"></li><li>
-									<a href="#" id="message_save_button" style="float:right" class="mochi_button blue save">Save</a>
-								</li>
-							</ul>
-							<textarea id="message_tbox" class="mochi_textarea"></textarea>
+						<ul class="discuss">
+						</ul>
+						<div id="respond" class="respond"> 
+							<a class="reply_hint" href="#">Click to Reply</a>
+							<div class="editor">
+								<ul class="toolbar">
+									<li>
+										<a href="#" class="mochi_button only_icon font_size"></a>
+									</li><li class="sep"></li><li>
+										<a href="#" class="mochi_button only_icon picture"></a>
+									</li><li>
+										<a href="#" class="mochi_button only_icon video"></a>
+									</li><li>
+										<a href="#" class="mochi_button only_icon vcard"></a>
+									</li><li class="sep"></li><li>
+										<a href="#" class="mochi_button only_icon strong"></a>
+									</li><li>
+										<a href="#" class="mochi_button only_icon italic"></a>
+									</li><li>
+										<a href="#" class="mochi_button only_icon underline"></a>
+									</li><li>
+										<a href="#" class="mochi_button only_icon strokeline"></a>
+									</li><li class="sep"></li><li>
+										<a href="#" class="mochi_button only_icon olist"></a>
+									</li><li>
+										<a href="#" class="mochi_button only_icon ulist"></a>
+									</li><li class="sep"></li><li>
+										<a href="#" id="message_save_button" style="float:right" class="mochi_button blue save">Save</a>
+									</li>
+								</ul>
+								<textarea id="message_tbox" class="mochi_textarea"></textarea>
+							</div>
 						</div>
 					</div>
 				</div><!-- #content-->
@@ -182,6 +219,22 @@
 			<a id="btn_profile_update" class="mochi_button blue" data-i18n-text="update">Update</a>
 			</div>
 			</div><!-- END of .dialog_container -->
-	</div>
+		</div>
+		<div id="compose_dlg" class="dialog">
+			<div class="dialog_bar">
+					<h2 class="dialog_title" style="">Compose</h2>
+					<a class="dialog_close_btn" title="Close" href="javascript:void(0);"></a>
+			</div>
+			<div class="dialog_container">
+			<div class="dialog_header" style="height:0px; padding:0"></div>
+			<div class="dialog_body" style="padding:0; height:200px;overflow: hidden;">
+				<textarea id="compose_tbox" name="" class="mochi_textarea" style="height:100%;width:100%;"></textarea>
+			</div>
+			<div class="dialog_footer" style="">
+			<a id="btn_compose_cancel" class="dialog_close_btn mochi_button" data-i18n-text="cancel">Cancel</a>
+			<a id="btn_compose_update" class="mochi_button blue" data-i18n-text="update">Update</a>
+			</div>
+			</div><!-- END of .dialog_container -->
+		</div>
 	</body>
 </html>

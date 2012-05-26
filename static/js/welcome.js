@@ -1,15 +1,5 @@
 function initWelcome() {
     // bind events
-    $('#sidebar .add_btn').click(function () {
-        var str = prompt("Say something, pal.");
-        if (str === null || str.length === 0) {
-            return
-        }
-        globals.client.createBlah(str, function (ret) {
-            loadAllBlah(); 
-        });
-    });
-
     $('#welcome .signin').click(function () {
         var username = $('#welcome .signin_box .username').val();
         var password = $('#welcome .signin_box .password').val();
@@ -58,5 +48,6 @@ function passAuth() {
     $('#welcome').hide();
     $('#container > h1').hide();
     $('#main').show();
+    $('#my_profile_avatar').addClass(globals.client.username)
     loadAllBlah(); 
 }
